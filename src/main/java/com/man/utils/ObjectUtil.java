@@ -17,6 +17,7 @@ import java.util.Set;
  */
 public class ObjectUtil {
 
+	public static String yyyyMMddHHmmss= "yyyy-MM-dd HH:mm:ss";
 	public static Integer parseInteger(Object src)
 	{
 		Integer num = null;
