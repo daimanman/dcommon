@@ -13,4 +13,8 @@ public class ReqParam extends HashMap<String,Object>{
 	public int getInt(String key) {
 		return ObjectUtil.parseInt(this.get(key));
 	}
+	
+	public long getLong(String key) {
+		return ObjectUtil.parseLong(this.get(key));
+	}
 }

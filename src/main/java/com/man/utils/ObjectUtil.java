@@ -3,6 +3,7 @@ package com.man.utils;
 import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
@@ -100,7 +101,7 @@ public class ObjectUtil {
 	
 	public static Map castMapObj(Object obj){
 		if(isNull(obj)){
-			return null;
+			return new HashMap();
 		}
 		if(obj instanceof Map){
 			return (Map)obj;
@@ -110,13 +111,13 @@ public class ObjectUtil {
 	
 	public static List castListObj(Object obj){
 		if(isNull(obj)){
-			return null;
+			return new ArrayList(1);
 		}
 		if(obj instanceof List){
 			return (List)obj;
 		}
 		
-		return null;
+		return new ArrayList(1);
 	}
 	
 	public static int multiply(Object ... nums){
@@ -170,6 +171,15 @@ public class ObjectUtil {
 		}
 		return headersMap;
 	}
+	
+	public static String getStr(Map<String,Object> data,String key) {
+		return toString(data.get(key),"");
+	}
+	
+	public static int getInt(Map<String,Object> data,String key) {
+		return parseInt(data.get(key));
+	}
+	
 	
 	
 }
