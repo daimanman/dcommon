@@ -23,7 +23,10 @@ public class QqConfig {
 	//publish emot 
 	public static String QQ_SENT_EMOT_URL = "https://user.qzone.qq.com/proxy/domain/taotao.qzone.qq.com/cgi-bin/emotion_cgi_publish_v6";
 	// emot num
-	public static int DEFAULT_NUM = 30;
+	public static int DEFAULT_EMOT_NUM = 30;
+	
+	//emot num real return 
+	public static int DEFAULT_EMOT_REAL_NUM = DEFAULT_EMOT_NUM;
 
 	// msg num
 	public static int DEFAULT_MSG_NUM = 20;
