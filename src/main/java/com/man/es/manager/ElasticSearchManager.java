@@ -106,20 +106,17 @@ public class ElasticSearchManager  {
 		String[] hs = parseHosts();
 		if (hs != null && hs.length > 0) {
 			for (String h : hs) {
-				
 				if (h != null && !"".equals(h.trim())) {
 					String ph = parseHost(h);
 					int port = parsePort(h);
 					try {
 						client.addTransportAddress(new TransportAddress(InetAddress.getByName(ph), port));
 					} catch (UnknownHostException e) {
+						logger.error("#########init es  error hosts={} ###########",hosts,e);
 						e.printStackTrace();
 					}
 				}
 			}
-		}
-		if(client==null){
-			throw new RuntimeException("实例化client失败");
 		}
 		this.client = client;
 		return client;
