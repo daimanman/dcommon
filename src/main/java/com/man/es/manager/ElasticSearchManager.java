@@ -229,8 +229,8 @@ public class ElasticSearchManager  {
 		if (null != docList && docList.size() > 0) {
 			BulkRequestBuilder bulkRequest = client.prepareBulk();
 			for (Map<String, Object> doc : docList) {
-				//String innerId = ObjectUtil.toString(doc.get("id"));
-				bulkRequest.add(client.prepareIndex(index, type, null).setSource(doc));
+				String innerId = ObjectUtil.toString(doc.get("id"));
+				bulkRequest.add(client.prepareIndex(index, type, innerId).setSource(doc));
 			}
 			if (refresh) {
 				bulkRequest.setRefreshPolicy(WriteRequest.RefreshPolicy.IMMEDIATE);
