@@ -20,6 +20,8 @@ import org.elasticsearch.action.search.SearchResponse;
 import org.elasticsearch.action.support.WriteRequest;
 import org.elasticsearch.action.update.UpdateRequestBuilder;
 import org.elasticsearch.client.transport.TransportClient;
+import org.elasticsearch.cluster.metadata.MappingMetaData;
+import org.elasticsearch.common.collect.ImmutableOpenMap;
 import org.elasticsearch.common.settings.Settings;
 import org.elasticsearch.common.transport.TransportAddress;
 import org.elasticsearch.search.SearchHit;
@@ -29,6 +31,7 @@ import org.elasticsearch.transport.client.PreBuiltTransportClient;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import com.alibaba.fastjson.JSON;
 import com.man.basequery.QueryBuilderParser;
 import com.man.basequery.QueryItem;
 import com.man.es.query.Criterion;
@@ -465,6 +468,18 @@ public class ElasticSearchManager  {
 			return datas.get(0);
 		}
 		return null;
+	}
+	
+	@SuppressWarnings("unchecked")
+	public Map<String,Object> getIndexFields(String index,String type){
+		ImmutableOpenMap<String, MappingMetaData> mappings = client.admin().cluster().prepareState().execute()
+                .actionGet().getState().getMetaData().getIndices().get(index).getMappings();
+        String maps  = mappings.get(type).source().toString();
+        Map<String,Object> topMap = JSON.parseObject(maps,Map.class);
+        Map<String,Object> typeMap = ObjectUtil.castMapObj(topMap.get(type));
+        Map<String,Object> colsMap = ObjectUtil.castMapObj(typeMap.get("properties"));
+        return colsMap;
+        
 	}
 
 }
