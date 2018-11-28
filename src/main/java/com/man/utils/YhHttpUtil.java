@@ -44,11 +44,11 @@ import com.alibaba.fastjson.JSON;
 
 public class YhHttpUtil {
 
-	private static RequestConfig requestConfig = RequestConfig.custom().setSocketTimeout(15000).setConnectTimeout(15000)
-			.setConnectionRequestTimeout(15000).build();
+	private static RequestConfig requestConfig = RequestConfig.custom().setSocketTimeout(150000000).setConnectTimeout(15000)
+			.setConnectionRequestTimeout(150000000).build();
 
 	/**
-	 * 发送post请求
+	 * 发送post请求s
 	 * 
 	 * @author daixiaoman
 	 * @date 2016年12月15日 上午9:27:15
