@@ -25,6 +25,9 @@ import org.elasticsearch.common.collect.ImmutableOpenMap;
 import org.elasticsearch.common.settings.Settings;
 import org.elasticsearch.common.transport.TransportAddress;
 import org.elasticsearch.search.SearchHit;
+import org.elasticsearch.search.aggregations.AggregationBuilders;
+import org.elasticsearch.search.aggregations.metrics.max.Max;
+import org.elasticsearch.search.aggregations.metrics.max.MaxAggregationBuilder;
 import org.elasticsearch.search.sort.FieldSortBuilder;
 import org.elasticsearch.search.sort.SortOrder;
 import org.elasticsearch.transport.client.PreBuiltTransportClient;
@@ -479,7 +482,20 @@ public class ElasticSearchManager  {
         Map<String,Object> typeMap = ObjectUtil.castMapObj(topMap.get(type));
         Map<String,Object> colsMap = ObjectUtil.castMapObj(typeMap.get("properties"));
         return colsMap;
-        
+	}
+	
+	
+	//get max id
+	public long getMaxId(String index,String type) {
+		MaxAggregationBuilder  aggsBuilder = AggregationBuilders.max("maxid").field("id");
+		SearchRequestBuilder searchRequestBuilder = client.prepareSearch(index).setTypes(type) 
+                .addAggregation(aggsBuilder)    
+                .setSize(0); 
+		 SearchResponse sr = searchRequestBuilder.execute().actionGet();
+		 Max max = sr.getAggregations().get("maxid");
+		 
+		 double  maxVal = max.getValue();
+		 return (long)maxVal;
 	}
 
 }
