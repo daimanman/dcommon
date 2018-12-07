@@ -22,6 +22,10 @@ public class QqConfig {
 
 	//publish emot 
 	public static String QQ_SENT_EMOT_URL = "https://user.qzone.qq.com/proxy/domain/taotao.qzone.qq.com/cgi-bin/emotion_cgi_publish_v6";
+	
+	//img video
+	public static String QQ_IMG_VEDIO_URL = "https://h5.qzone.qq.com/proxy/domain/photo.qzone.qq.com/fcgi-bin/cgi_floatview_photo_list_v2";
+	
 	// emot num
 	public static int DEFAULT_EMOT_NUM = 30;
 	

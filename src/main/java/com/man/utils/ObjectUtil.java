@@ -46,7 +46,11 @@ public class ObjectUtil {
 		return parseInt(src);
 	}
 	public static Double parseDouble(Object src){
+		try {
 			return Double.parseDouble(ObjectUtil.toString(src,"0"));
+		}catch(Exception e) {
+			return 0d;
+		}
 	}
 	
 	public static long parseLong(Object src){
@@ -178,6 +182,14 @@ public class ObjectUtil {
 	
 	public static int getInt(Map<String,Object> data,String key) {
 		return parseInt(data.get(key));
+	}
+	
+	public static double getDouble(Map<String,Object> data,String key) {
+		return parseDouble(data.get(key));
+	}
+	
+	public static long getLong(Map<String,Object> data,String key) {
+		return parseLong(data.get(key));
 	}
 	
 	
