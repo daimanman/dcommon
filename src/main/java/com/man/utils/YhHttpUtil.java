@@ -44,8 +44,8 @@ import com.alibaba.fastjson.JSON;
 
 public class YhHttpUtil {
 
-	private static RequestConfig requestConfig = RequestConfig.custom().setSocketTimeout(150000000).setConnectTimeout(15000)
-			.setConnectionRequestTimeout(150000000).build();
+	private static RequestConfig requestConfig = RequestConfig.custom().setSocketTimeout(150000).setConnectTimeout(150000)
+			.setConnectionRequestTimeout(150000).build();
 
 	/**
 	 * 发送post请求s

@@ -64,7 +64,7 @@ public class ConstaintsUtil {
 	/**
 	 * 超时重试次数
 	 */
-	public static int TIMEOUT_RETRY = 10;
+	public static int TIMEOUT_RETRY = 50;
 	
 	//算价规则 每天算价
 	public static String PRICE_RULE_1 = "1";
