@@ -441,7 +441,8 @@ public class ElasticSearchManager  {
 	public List<Map<String, Object>> filterList(String index, String type, int size, List<QueryItem> queryParams,
 			List<SortParams> sorts) {
 		SearchRequestBuilder searchRequest = client.prepareSearch(index).setSize(size).setTypes(type)
-				.setPostFilter(new QueryBuilderParser().parseQueryItems(queryParams));
+				.setQuery(new QueryBuilderParser().parseQueryItems(queryParams));
+				//.setPostFilter(new QueryBuilderParser().parseQueryItems(queryParams));
 		setSort(searchRequest, sorts);
 		return getDocContent(searchRequest.get());
 	}
@@ -452,7 +453,8 @@ public class ElasticSearchManager  {
 	public PageResult<Map<String, Object>> filterPage(String index, String type, QueryParams queryParams) {
 		PageResult<Map<String, Object>> pageResult = new PageResult<Map<String, Object>>();
 		SearchRequestBuilder searchRequest = client.prepareSearch(index).setTypes(type)
-				.setPostFilter(new QueryBuilderParser().parseQueryItems(queryParams.getQueryItems()));
+				.setQuery(new QueryBuilderParser().parseQueryItems(queryParams.getQueryItems()));
+				//.setPostFilter(new QueryBuilderParser().parseQueryItems(queryParams.getQueryItems()));
 		searchRequest.setFrom(queryParams.getOffset()).setSize(queryParams.getPageSize());
 		setSort(searchRequest, queryParams.getSorts());
 		SearchResponse searchResponse = searchRequest.get();

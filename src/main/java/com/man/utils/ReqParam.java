@@ -1,6 +1,7 @@
 package com.man.utils;
 
 import java.util.HashMap;
+import java.util.List;
 
 public class ReqParam extends HashMap<String,Object>{
 
@@ -17,4 +18,9 @@ public class ReqParam extends HashMap<String,Object>{
 	public long getLong(String key) {
 		return ObjectUtil.parseLong(this.get(key));
 	}
+	
+	public List getList(String key) {
+		return ObjectUtil.castListObj(this.get(key));
+	}
+	
 }
