@@ -14,6 +14,9 @@ public class IdxConstant {
 	public static String QPHOTO_IMG_IDX = "qphoto_img_idx_alias";
 	public static String QPHOTO_IMG_TYPE = "qphoto_img";
 	
+	public static String QMSG_INFO_IDX = "qmsg_info_idx_alias";
+	public static String QMSG_INFO_TYPE = "qmsg_info";
+	
 	public static int AND = 1;
 	public static int OR = 0;
 
