@@ -8,6 +8,12 @@ public class IdxConstant {
 	public static String QEMOT_INFO_IDX = "qemot_info_idx_alias";
 	public static String QEMOT_INFO_TYPE = "qemot_info";
 	
+	public static String QEMOT_COMMENT_IDX = "qemot_comment_idx_alias";
+	public static String QEMOT_COMMENT_TYPE = "qemot_comment";
+	
+	public static String QEMOT_PIC_IDX = "qemot_pic_idx_alias";
+	public static String QEMOT_PIC_TYPE = "qemot_pic";
+	
 	public static String QPHOTO_INFO_IDX = "qphoto_info_idx_alias";
 	public static String QPHOTO_INFO_TYPE = "qphoto_info";
 	

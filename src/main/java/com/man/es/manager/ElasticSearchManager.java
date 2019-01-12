@@ -446,6 +446,10 @@ public class ElasticSearchManager  {
 		setSort(searchRequest, sorts);
 		return getDocContent(searchRequest.get());
 	}
+	
+	public List<Map<String,Object>> queryList(String index,String type,QueryParams queryParams){
+		return filterList(index,type,queryParams.getPageSize(),queryParams.getQueryItems(),queryParams.getSorts());
+	}
 
 	/**
 	 * 分页获取数据

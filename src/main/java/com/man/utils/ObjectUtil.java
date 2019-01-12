@@ -3,8 +3,10 @@ package com.man.utils;
 import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -19,6 +21,19 @@ import java.util.Set;
 public class ObjectUtil {
 
 	public static String yyyyMMddHHmmss= "yyyy-MM-dd HH:mm:ss";
+	public static String yyyyMMdd= "yyyyMMdd";
+	public static String yyyy_MM_dd= "yyyy-MM-dd";
+	public static SimpleDateFormat sdf = new SimpleDateFormat();
+	public static String getQqDate(String textMills) {
+		try {
+		long mills = parseLong(textMills)*1000;
+		Date date = new Date(mills);
+		sdf.applyPattern(yyyyMMdd);
+		return sdf.format(date);
+		}catch(Exception e) {
+			return "0000-00-00";
+		}
+	}
 	public static Integer parseInteger(Object src)
 	{
 		Integer num = null;
