@@ -26,6 +26,8 @@ import org.elasticsearch.common.settings.Settings;
 import org.elasticsearch.common.transport.TransportAddress;
 import org.elasticsearch.search.SearchHit;
 import org.elasticsearch.search.aggregations.AggregationBuilders;
+import org.elasticsearch.search.aggregations.bucket.terms.Terms;
+import org.elasticsearch.search.aggregations.bucket.terms.TermsAggregationBuilder;
 import org.elasticsearch.search.aggregations.metrics.max.Max;
 import org.elasticsearch.search.aggregations.metrics.max.MaxAggregationBuilder;
 import org.elasticsearch.search.sort.FieldSortBuilder;
@@ -37,6 +39,7 @@ import org.slf4j.LoggerFactory;
 import com.alibaba.fastjson.JSON;
 import com.man.basequery.QueryBuilderParser;
 import com.man.basequery.QueryItem;
+import com.man.dto.CountSingleDto;
 import com.man.es.query.Criterion;
 import com.man.pageinfo.PageResult;
 import com.man.pageinfo.QueryParams;
@@ -502,6 +505,25 @@ public class ElasticSearchManager  {
 		 
 		 double  maxVal = max.getValue();
 		 return (long)maxVal;
+	}
+	
+	public List<CountSingleDto> countGroupOneField(String index,String type,String field,int size,QueryParams queryParams){
+		List<CountSingleDto> datas = new ArrayList<>();
+		SearchRequestBuilder searchRequest = client.prepareSearch(index).setTypes(type)
+				.setQuery(new QueryBuilderParser().parseQueryItems(queryParams.getQueryItems()));
+		TermsAggregationBuilder termsAggregationBuilder = AggregationBuilders.terms("count_group").field(field);
+		termsAggregationBuilder.size(size);
+		searchRequest.addAggregation(termsAggregationBuilder);
+		searchRequest.setSize(0);
+		SearchResponse sr = searchRequest.execute().actionGet();
+		Terms aggregation = sr.getAggregations().get("count_group");
+		 for (Terms.Bucket bucket : aggregation.getBuckets()) {
+			 CountSingleDto data = new CountSingleDto();
+			 data.key = bucket.getKeyAsString();
+			 data.value = bucket.getDocCount();
+			 datas.add(data);
+		 }     
+		return datas;
 	}
 
 }
