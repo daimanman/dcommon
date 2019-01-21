@@ -25,5 +25,8 @@ public class IdxConstant {
 	
 	public static int AND = 1;
 	public static int OR = 0;
+	
+	
+	
 
 }

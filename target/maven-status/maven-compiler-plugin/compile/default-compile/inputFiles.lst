@@ -15,6 +15,7 @@ D:\dxmtools\myxm\dcommon\src\main\java\com\man\es\query\Logic.java
 D:\dxmtools\myxm\dcommon\src\main\java\com\man\constant\QcodeEnum.java
 D:\dxmtools\myxm\dcommon\src\main\java\com\man\dto\CountSingleDto.java
 D:\dxmtools\myxm\dcommon\src\main\java\com\man\es\query\OrderRule.java
+D:\dxmtools\myxm\dcommon\src\main\java\com\man\mongo\MongoDBHelper.java
 D:\dxmtools\myxm\dcommon\src\main\java\com\man\pageinfo\QueryParams.java
 D:\dxmtools\myxm\dcommon\src\main\java\com\man\utils\IdWorker.java
 D:\dxmtools\myxm\dcommon\src\main\java\com\man\utils\ReqParam.java

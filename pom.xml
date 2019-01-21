@@ -63,6 +63,38 @@
 			<scope>provided</scope>
 		</dependency>
  		-->
+ 		
+ 		<dependency>
+		    <groupId>org.mongodb</groupId>
+		    <artifactId>mongodb-driver</artifactId>
+		    <version>3.9.1</version>
+		</dependency>
+		<!--
+		<dependency>
+		    <groupId>org.mongodb</groupId>
+		    <artifactId>mongodb-driver-async</artifactId>
+		    <version>3.9.1</version>
+		</dependency>
+		 https://mvnrepository.com/artifact/org.mongodb/mongodb-driver-core
+		<dependency>
+		    <groupId>org.mongodb</groupId>
+		    <artifactId>mongodb-driver-core</artifactId>
+		    <version>3.9.1</version>
+		</dependency>
+		 -->
+		<!-- https://mvnrepository.com/artifact/org.mongodb/bson 
+<dependency>
+    <groupId>org.mongodb</groupId>
+    <artifactId>bson</artifactId>
+    <version>3.9.1</version>
+</dependency>-->
+		<dependency>
+		    <groupId>junit</groupId>
+		    <artifactId>junit</artifactId>
+		    <version>4.12</version>
+		    <scope>test</scope>
+		</dependency>
+		
 	</dependencies>
 	<build>
 		<plugins>
