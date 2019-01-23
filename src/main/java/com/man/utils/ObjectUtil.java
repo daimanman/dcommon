@@ -99,6 +99,14 @@ public class ObjectUtil {
 		return "";
 	}
 	
+	public static String toString(Object src,int maxLen,String ... planStr){
+		String str = toString(src, planStr);
+		if(str.length() >= maxLen) {
+			return str.trim().substring(0,maxLen-1);
+		}
+		return str;
+	}
+	
 	public static int getSize(Object obj){
 		if(isNull(obj)){
 			return 0;
