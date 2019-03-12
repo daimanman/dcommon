@@ -2,6 +2,7 @@ package com.man.utils;
 
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class ReqParam extends HashMap<String,Object>{
 
@@ -21,6 +22,10 @@ public class ReqParam extends HashMap<String,Object>{
 	
 	public List getList(String key) {
 		return ObjectUtil.castListObj(this.get(key));
+	}
+	
+	public Map getMap(String key) {
+		return ObjectUtil.castMapObj(this.get(key));
 	}
 	
 }
